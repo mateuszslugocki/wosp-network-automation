@@ -1,8 +1,9 @@
-from typing import Callable, List, Optional
+from typing import Callable, List
 
-from pyats.topology import Device, Testbed, Interface
+from pyats.topology import Device, Interface, Testbed
 
 from utils.enums import DeviceOS
+
 
 def get_iosxe_routers(testbed: Testbed) -> List[Device]:
     return [
@@ -10,6 +11,7 @@ def get_iosxe_routers(testbed: Testbed) -> List[Device]:
         for device in testbed.devices.values()
         if device.os == DeviceOS.IOSXE.value
     ]
+
 
 def get_interfaces_by_condition(
     device: Device, condition: Callable[[Interface], bool]

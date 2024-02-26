@@ -1,0 +1,95 @@
+testbed:
+    name: wosp-testbed
+
+devices:
+    wosp-poznan-core:
+      os: iosxe
+      type: router
+      credentials:
+        default:
+          username: admin
+          password: admin
+      connections:
+          defaults:
+            via: ssh
+            class: unicon.Unicon
+          ssh:
+              arguments:
+                mit: true          
+              protocol: ssh
+              ip: 192.168.56.253
+              port: 22
+              ssh_options: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+
+    wosp-warsaw-core:
+      os: iosxe
+      type: router
+      credentials:
+        default:
+          username: admin
+          password: admin
+      connections:
+          defaults:
+            via: ssh
+            class: unicon.Unicon
+          ssh:
+              arguments:
+                mit: true              
+              protocol: ssh
+              ip: 192.168.56.228
+              port: 22
+              ssh_options: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null            
+
+    wosp-wroclaw-core:
+      os: iosxe
+      type: router
+      credentials:
+        default:
+          username: admin
+          password: admin
+      connections:
+          defaults:
+            via: ssh
+            class: unicon.Unicon
+          ssh:
+              arguments:
+                mit: true              
+              protocol: ssh
+              ip: 192.168.56.214
+              port: 22
+              ssh_options: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null                 
+
+topology:
+    wosp-poznan-core:
+        interfaces:
+            GigabitEthernet1:
+              type: ethernet
+              mgmt: true
+              ipv4: 192.168.56.253/24       
+            GigabitEthernet2:
+                type: ethernet
+                ipv4: 10.10.0.1/24
+                connectivity_test: true
+
+    wosp-warsaw-core:
+        interfaces:
+            GigabitEthernet1:
+              type: ethernet
+              mgmt: true
+              ipv4: 192.168.56.228/24       
+            GigabitEthernet2:
+                type: ethernet
+                ipv4: 10.10.0.2/24
+                connectivity_test: true
+
+    wosp-wroclaw-core:
+        interfaces:
+            GigabitEthernet1:
+              type: ethernet
+              mgmt: true
+              ipv4: 192.168.56.214/24       
+            GigabitEthernet2:
+                type: ethernet
+                ipv4: 10.10.0.3/24
+                connectivity_test: true                
+  

@@ -47,7 +47,7 @@ class GetBackups(aetest.Testcase):
         devices_config = []
         for router in iosxe_routers:
             logger.info(f"Getting running config from {router.name}")
-            running_config = router.execute("show running config")
+            running_config = router.execute("show running-config")
             devices_config.append(DeviceConfig(name=router.name, config=running_config))
         self.parameters[DEVICES_CONFIG] = devices_config
 

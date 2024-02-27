@@ -21,7 +21,8 @@ BACKUP_FOLDER = "backup_folder"
 
 def create_backup_folder() -> Path:
     todays_date = datetime.today().strftime("%Y-%m-%d")
-    backup_folder = BACKUP_PATH / todays_date
+    current_time = datetime.now().strftime("%H-%M-%S")
+    backup_folder = BACKUP_PATH / todays_date / current_time
     logger.info(f"Backup folder path: {backup_folder}")
     backup_folder.mkdir(parents=True, exist_ok=True)
     return backup_folder

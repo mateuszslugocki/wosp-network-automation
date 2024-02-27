@@ -15,7 +15,7 @@ devices:
             class: unicon.Unicon
           ssh:
               arguments:
-                mit: true          
+                init_exec_commands: []        
               protocol: ssh
               ip: 192.168.56.253
               port: 22
@@ -34,7 +34,7 @@ devices:
             class: unicon.Unicon
           ssh:
               arguments:
-                mit: true              
+                init_exec_commands: []               
               protocol: ssh
               ip: 192.168.56.228
               port: 22
@@ -53,7 +53,7 @@ devices:
             class: unicon.Unicon
           ssh:
               arguments:
-                mit: true              
+                init_exec_commands: []             
               protocol: ssh
               ip: 192.168.56.214
               port: 22

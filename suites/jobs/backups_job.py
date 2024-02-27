@@ -7,6 +7,7 @@ def main():
     logging.root.setLevel("INFO")
     testscript = {
         "testscript": "testscripts/backups.py",
+        "datafile": "datafiles/backups.yaml"
     }
 
     run(**testscript)

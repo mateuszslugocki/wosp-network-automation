@@ -15,14 +15,13 @@ logger = logging.getLogger(__name__)
 
 IOSXE_ROUTERS = "iosxe_routers"
 DEVICES_CONFIG = "devices_config"
-BACKUP_PATH = Path(f"/home/{os.getlogin()}/backups/")
 BACKUP_FOLDER = "backup_folder"
 
 
-def create_backup_folder() -> Path:
+def create_backup_folder(backup_path: Path) -> Path:
     todays_date = datetime.today().strftime("%Y-%m-%d")
     current_time = datetime.now().strftime("%H-%M-%S")
-    backup_folder = BACKUP_PATH / todays_date / current_time
+    backup_folder = backup_path / todays_date / current_time
     logger.info(f"Backup folder path: {backup_folder}")
     backup_folder.mkdir(parents=True, exist_ok=True)
     return backup_folder
@@ -36,9 +35,9 @@ class CommonSetup(aetest.CommonSetup):
         self.parent.parameters[IOSXE_ROUTERS] = iosxe_routers
 
     @aetest.subsection
-    def prepare_backup_folder(self) -> None:
+    def prepare_backup_folder(self, backup_path: str) -> None:
         logger.info(f"Creating backup folder")
-        self.parent.parameters[BACKUP_FOLDER] = create_backup_folder()
+        self.parent.parameters[BACKUP_FOLDER] = create_backup_folder(Path(backup_path))
 
 
 class GetBackups(aetest.Testcase):

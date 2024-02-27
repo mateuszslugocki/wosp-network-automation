@@ -15,7 +15,7 @@ devices:
             class: unicon.Unicon
           ssh:
               arguments:
-                init_exec_commands: []        
+                init_exec_commands: [terminal length 0]     
               protocol: ssh
               ip: 192.168.56.253
               port: 22
@@ -34,7 +34,7 @@ devices:
             class: unicon.Unicon
           ssh:
               arguments:
-                init_exec_commands: []               
+                init_exec_commands: [terminal length 0]                
               protocol: ssh
               ip: 192.168.56.228
               port: 22
@@ -53,7 +53,7 @@ devices:
             class: unicon.Unicon
           ssh:
               arguments:
-                init_exec_commands: []             
+                init_exec_commands: [terminal length 0]              
               protocol: ssh
               ip: 192.168.56.214
               port: 22
